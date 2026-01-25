@@ -1,7 +1,7 @@
 call plug#begin()
-Plug 'liuchengxu/vista.vim',
-Plug 'tpope/vim-fugitive',
-Plug 'preservim/vim-markdown',
+Plug 'liuchengxu/vista.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'preservim/vim-markdown'
 Plug 'machakann/vim-highlightedyank'
 Plug 'ctrlpvim/ctrlp.vim'
 call plug#end()
@@ -21,6 +21,8 @@ let g:vista_sidebar_width = 50
 let g:vista_close_on_jump = 1
 let g:vista#renderer#enable_icon = 0
 let g:highlightedyank_highlight_duration = 300
+let g:vamp_location = "east"
+let g:vamp_width = 0.5
 
 nnoremap - :Vista!!<CR>
 nnoremap gf :e <cfile><CR>
@@ -28,4 +30,8 @@ nnoremap <c-o> :CtrlPMRU<CR>
 nnoremap <c-p> :CtrlP<CR>
 
 autocmd FileType gitcommit,fugitive,fugitiveblame setlocal nonumber norelativenumber
-autocmd FileType ctrlp setlocal laststatus=0
+
+let g:ctrlp_buffer_func = {
+    \ 'enter': {-> execute('set laststatus=0')},
+    \ 'exit': {-> execute('set laststatus=2')}
+\ }
