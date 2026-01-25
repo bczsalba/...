@@ -53,7 +53,6 @@ alias gap='git commit -p'
 
 ### PATHS, ENV & AUTO INSERTED
 #
-
 export AMP_TOOLBOX=".amp:../.amp"
 export EDITOR="vim"
 export HISTCONTROL="ignoreboth"
