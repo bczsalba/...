@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Generate a favicon .ico file from $1
+
+convert "$1"  -bordercolor white -border 0 \
+      \( -clone 0 -filter point -resize 16x16 \) \
+      \( -clone 0 -filter point -resize 32x32 \) \
+      \( -clone 0 -filter point -resize 48x48 \) \
+      \( -clone 0 -filter point -resize 64x64 \) \
+      -delete 0 -alpha off -colors 256 favicon.ico

@@ -1,43 +1,28 @@
 shopt -s globstar
 
-bold='\[\033[1m\]'
-reset='\[\033[00m\]'
+declare -A colors=(
+    [turquoise]="109 110"
+    [maci]="140 146"
+    [turtl]="222 214"
+    [malni]="203 149"
+    [nectarine]="3 229"
+)
 
-case $HOSTNAME in
-    turquoise* )
-        col_main='\[\033[38;5;109m\]'
-        col_accent='\[\033[38;5;110m\]'
-        ;;
-
-    turquoise_old* )
-        col_main='\[\033[38;5;60m\]'
-        col_accent='\[\033[38;5;146m\]'
-        ;;
-
-    maci* )
-        col_main='\[\033[38;5;140m\]'
-        col_accent='\[\033[38;5;146m\]'
-        ;;
-
-    "turtl" )
-        col_main='\[\033[38;5;222m\]'
-        col_accent='\[\033[38;5;214m\]'
-        ;;
-
-    "malni" )
-        col_main='\[\033[38;5;203m\]'
-        col_accent='\[\033[38;5;149m\]'
-        ;;
-
-    "nectarine" )
-        col_main='\[\033[97m\]'
-        col_accent='\[\033[90m\]'
-        ;;
-esac
+for pattern in "${!colors[@]}"; do
+    if [[ $HOSTNAME == $pattern* ]]; then
+        read main accent <<< "${colors[$pattern]}"
+        col_main="\[\033[38;5;${main}m\]"
+        col_accent="\[\033[38;5;${accent}m\]"
+        break
+    fi
+done
 
 ### FUNCTIONS
 #
 set_ps1() {
+    bold='\[\033[1m\]'
+    reset='\[\033[00m\]'
+
     export PS1="$bold$col_main\u: $col_accent\W $col_main\$$reset "
     export SUDO_PS1="$bold\[\033[38;5;210m\]\u: $col_accent\W $col_main#$reset "
 }

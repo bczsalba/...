@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Get a block of feasible but gibberish prose
+
+count="$1"
+
+if [ "$count" = "" ]; then
+    count="5"
+fi
+
+curl -s http://metaphorpsum.com/paragraphs/"$count"
+echo ""

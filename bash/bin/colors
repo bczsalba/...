@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# Display 256-color palette with readable foreground colors
+
+color() {
+    local i=$1 fg=0
+    if (( i < 8 || (i >= 232 && i < 244) )); then fg=15; fi
+    if (( i >= 16 && i < 232 )); then
+        local c=$((i - 16))
+        local r=$((c / 36)) g=$(((c / 6) % 6)) b=$((c % 6))
+        if (( r + g + b < 8 )); then fg=15; fi
+    fi
+    printf "\x1b[38;5;%dm\x1b[48;5;%dm%5d\x1b[0m" "$fg" "$i" "$i"
+}
+
+# First 8 colors
+for i in {0..7}; do color "$i"; done
+printf "\n"
+
+# Colors 8-15
+for i in {8..15}; do color "$i"; done
+printf "\n\n"
+
+# 6x6x6 color cube (2 rows of 3 R-slices each)
+for row in 0 1; do
+    for g in {0..5}; do
+        for r in $((row * 3)) $((row * 3 + 1)) $((row * 3 + 2)); do
+            for b in {0..5}; do
+                color $((16 + 36*r + 6*g + b))
+            done
+            printf " "
+        done
+        printf "\n"
+    done
+    printf "\n"
+done
+
+# Grayscale
+for i in {232..255}; do color "$i"; done
+printf "\n"
