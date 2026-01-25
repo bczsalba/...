@@ -14,7 +14,7 @@ set scrolloff=9999 hidden
 
 set shiftwidth=4 smarttab expandtab
 set tabstop=8 softtabstop=0
-set directory=~/.config/vim/.swap undodir=~/.config/vim/.undo
+set directory=~/.config/vim/.swap undofile undodir=~/.config/vim/.undo
 
 let g:vim_markdown_folding_disabled = 1
 let g:vista_sidebar_width = 50
