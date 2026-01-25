@@ -1,0 +1,31 @@
+call plug#begin()
+Plug 'liuchengxu/vista.vim',
+Plug 'tpope/vim-fugitive',
+Plug 'preservim/vim-markdown',
+Plug 'machakann/vim-highlightedyank'
+Plug 'ctrlpvim/ctrlp.vim'
+call plug#end()
+
+colorscheme standard
+
+set splitbelow splitright
+set relativenumber laststatus=2
+set scrolloff=9999 hidden
+
+set shiftwidth=4 smarttab expandtab
+set tabstop=8 softtabstop=0
+set directory=~/.config/vim/.swap undodir=~/.config/vim/.undo
+
+let g:vim_markdown_folding_disabled = 1
+let g:vista_sidebar_width = 50
+let g:vista_close_on_jump = 1
+let g:vista#renderer#enable_icon = 0
+let g:highlightedyank_highlight_duration = 300
+
+nnoremap - :Vista!!<CR>
+nnoremap gf :e <cfile><CR>
+nnoremap <c-o> :CtrlPMRU<CR>
+nnoremap <c-p> :CtrlP<CR>
+
+autocmd FileType gitcommit,fugitive,fugitiveblame setlocal nonumber norelativenumber
+autocmd FileType ctrlp setlocal laststatus=0
