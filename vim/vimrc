@@ -9,7 +9,7 @@ call plug#end()
 colorscheme standard
 
 set splitbelow splitright
-set relativenumber laststatus=2
+set relativenumber laststatus=2 nowrap
 set scrolloff=9999 hidden
 
 set shiftwidth=4 smarttab expandtab
