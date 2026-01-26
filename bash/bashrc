@@ -9,12 +9,16 @@ declare -A colors=(
 )
 
 for pattern in "${!colors[@]}"; do
-    if [[ $HOSTNAME == $pattern* ]]; then
-        read main accent <<< "${colors[$pattern]}"
-        col_main="\[\033[38;5;${main}m\]"
-        col_accent="\[\033[38;5;${accent}m\]"
-        break
+    if [[ $HOSTNAME != $pattern* ]]; then
+        continue
     fi
+
+    read main accent <<< "${colors[$pattern]}"
+    col_main="\[\033[38;5;${main}m\]"
+    col_accent="\[\033[38;5;${accent}m\]"
+    export SDS_ACCENT="$accent"
+
+    break
 done
 
 ### FUNCTIONS

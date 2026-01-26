@@ -11,6 +11,10 @@ set cursorline
 
 let s:accent = get(g:, 'sds_accent', 11)
 
+if exists('$SDS_ACCENT')
+    let s:accent = $SDS_ACCENT
+endif
+
 function! SynStack()
     if !exists("*synstack")
         return
