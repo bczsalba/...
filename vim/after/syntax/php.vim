@@ -10,10 +10,12 @@ let s:alpinePatterns = [
 \ ]
 
 for pat in s:alpinePatterns
-    execute 'syntax region alpineJS matchgroup=htmlArg'
-        \ . ' start=+' . pat . '="+'
-        \ . ' skip=+<?.*?>+'
-        \ . ' end=+"+'
-        \ . ' contains=@jsAll,phpRegion,phpRegionAsp,phpRegionSc'
-        \ . ' containedin=htmlTag keepend extend'
+    for q in ['"', "'"]
+        execute 'syntax region alpineJS matchgroup=htmlArg'
+            \ . ' start=+' . pat . '=' . q . '+'
+            \ . ' skip=+<?.*?>+'
+            \ . ' end=+' . q . '+'
+            \ . ' contains=@jsAll,phpRegion,phpRegionAsp,phpRegionSc'
+            \ . ' containedin=htmlTag,phpStringDouble,phpStringSingle keepend extend'
+    endfor
 endfor
