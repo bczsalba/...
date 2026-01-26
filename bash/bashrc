@@ -5,7 +5,7 @@ declare -A colors=(
     [maci]="140 146"
     [turtl]="222 214"
     [malni]="203 149"
-    [nectarine]="3 7"
+    [nectarine]="3 222"
 )
 
 for pattern in "${!colors[@]}"; do
