@@ -25,8 +25,8 @@ let g:vamp_height = 10
 
 nnoremap - :Vista!!<CR>
 nnoremap gf :e <cfile><CR>
-nnoremap <c-o> :CtrlPMRU<CR>
-nnoremap <c-p> :CtrlP<CR>
+nnoremap <space>b :CtrlPMRU<CR>
+nnoremap <space>e :CtrlP<CR>
 
 autocmd FileType gitcommit,fugitive,fugitiveblame setlocal nonumber norelativenumber
 
