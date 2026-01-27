@@ -10,7 +10,7 @@ colorscheme standard
 
 set splitbelow splitright
 set relativenumber laststatus=2 nowrap
-set scrolloff=9999 hidden
+set scrolloff=9999 hidden incsearch
 
 set shiftwidth=4 smarttab expandtab
 set tabstop=8 softtabstop=0
