@@ -2,3 +2,5 @@ font-family = Berkeley Mono
 window-theme = ghostty
 window-padding-balance = true
 theme = Standard
+background-opacity = 0.98
+background-blur = true

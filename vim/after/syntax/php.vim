@@ -10,7 +10,7 @@ let s:alpinePatterns = [
 \ ]
 
 for pat in s:alpinePatterns
-    for q in ['"', "'"]
+    for q in ['"', "'", '`']
         execute 'syntax region alpineJS matchgroup=htmlArg'
             \ . ' start=+' . pat . '=' . q . '+'
             \ . ' skip=+<?.*?>+'

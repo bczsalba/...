@@ -161,6 +161,9 @@ hi! link sqlVariable SDS_NormalDim
 hi! link makeSpecial SDS_NormalDim
 hi! link pythonOperator Statement
 
+hi! link phpAlpineString SDS_Accent
+hi! link phpAlpineDelimiter SDS_NormalDim
+
 hi! link gitcommitComment SDS_NormalDim
 hi! link gitcommitSummary SDS_Normal
 hi! link gitcommitOverflow SDS_Warning

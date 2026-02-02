@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Use fzf to fuzzy switch between tmux sessions
+
+tmuxsessions=$(tmux list-sessions -F "#{session_name}")
+
+choice=$(sort -rfu <<< "$tmuxsessions" \
+	| fzf --color=bg+:8,pointer:2 \
+	| tr -d '\n')
+
+if [[ $tmuxsessions = *"$choice"* ]]; then
+    tmux switch-client -t "$choice"
+fi
